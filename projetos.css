@@ -1,0 +1,591 @@
+/* ========================================================================= */
+/* projetos.css - ESTILOS ESPECÍFICOS DA PÁGINA PROJETOS/NOVIDADES            */
+/* ========================================================================= */
+
+/* NOVIDADES (ESTILOS GENÉRICOS) */
+.projetos {
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* BLOCO A (Cápsula 01) */
+.capsula-a {
+    background-image: url("Fotos/RodaPorche.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-bottom: 4rem;
+}
+
+.capsula-a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+.titulo-a {
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: #aaaaaa;
+}
+
+/* CARDS INCLINADOS A */
+.cards-inclinados {
+    display: flex;
+    justify-content: center;
+    width: 1100px;
+    height: 400px;
+    margin: 50px auto;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-inclinado {
+    position: absolute;
+    height: 100%;
+    transition: transform 0.5s ease, z-index 0.5s ease, width 0.5s ease, left 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.card-1 {
+    width: 50%;
+    left: 0;
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+    background-image: url("Fotos/IMG_5685.jpg");
+    background-position: center 30%;
+    z-index: 1;
+}
+
+.card-2 {
+    width: 100%;
+    left: 0;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    background-image: url("Fotos/IMG_5660.jpg");
+    background-position: center 20%;
+    z-index: 2;
+}
+
+.card-3 {
+    width: 50%;
+    left: 50%;
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+    background-image: url("Fotos/IMG_5673.jpg");
+    background-position: center 30%;
+    z-index: 1;
+}
+
+.card-inclinado .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    background: transparent;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 80%;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.card-inclinado:hover {
+    opacity: 1;
+    z-index: 10;
+    transform: scale(1.05);
+}
+
+.card-1:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-2:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-3:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-inclinado:hover .content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Ícones Sociais A */
+.social-icons {
+    position: absolute;
+    top: -120px;
+    left: -30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: scale(1.2);
+}
+
+/* Container de Conteúdo A */
+.capsula-a-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 4rem auto 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.texto-container {
+    flex: 1.55;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    height: 400px;
+    position: relative;
+    z-index: 2;
+}
+
+.texto-container h3 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+}
+
+.texto-container p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.video-container {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #ff4d4d;
+    border-radius: 10px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 110px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* CARROSSEL PRINCIPAL A */
+.carrossel-projetos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    max-width: 4000px;
+    height: 300px;
+    margin: 1rem auto;
+    border-radius: 0px;
+}
+
+.carrossel-trilha {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carrossel-item {
+    min-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    object-position: 10% 18%;
+}
+
+.carrossel-botao {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.carrossel-botao.prev {
+    left: 10px;
+}
+
+.carrossel-botao.next {
+    right: 10px;
+}
+
+.youtube-video {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.youtube-video iframe {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 8px;
+}
+
+/* MEDIA QUERIES A */
+@media (max-width: 900px) {
+    .projetos-conteudo {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .texto-container {
+        width: 90%;
+        height: auto;
+    }
+
+    .video-container {
+        width: 90%;
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+}
+
+
+/* BLOCO B (Cápsula 02) */
+.capsula-b {
+    background-image: url("Fotos/SaoPaulo1.jpg");
+    background-size: 800px 800px;
+    background-position: auto;
+    background-repeat: no-repeat;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    margin-top: 4rem;
+    min-height: 800px;
+}
+
+.capsula-b::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.titulo-b {
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: rgba(5, 6, 14, 0.75);
+}
+
+/* CARDS INCLINADOS B */
+.cards-inclinados-b {
+    display: flex;
+    justify-content: center;
+    width: 1100px;
+    height: 400px;
+    margin: 50px auto;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-inclinado-b {
+    position: absolute;
+    height: 100%;
+    transition: transform 0.5s ease, z-index 0.5s ease, width 0.5s ease, left 0.5s ease;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+}
+
+.card-1b {
+    width: 50%;
+    left: 0;
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+    background-image: url("Fotos/IMG_5231.jpg");
+    background-position: center 14%;
+    z-index: 1;
+}
+
+.card-2b {
+    width: 100%;
+    left: 0;
+    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    background-image: url("Fotos/IMG_5235.jpg");
+    background-position: center 5%;
+    z-index: 2;
+}
+
+.card-3b {
+    width: 50%;
+    left: 50%;
+    clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+    background-image: url("Fotos/IMG_5240.jpg");
+    background-position: center 20%;
+    z-index: 1;
+}
+
+.card-inclinado-b .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    background: transparent;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    width: 80%;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+.card-inclinado-b:hover {
+    opacity: 1;
+    z-index: 10;
+    transform: scale(1.05);
+}
+
+.card-1b:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-2b:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-3b:hover {
+    width: 100%;
+    left: 0;
+    clip-path: none;
+}
+
+.card-inclinado-b:hover .content {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Ícones Sociais B */
+.social-icons-b {
+    position: absolute;
+    top: 30px;
+    left: 80px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-icons-b img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-icons-b a:hover img {
+    transform: scale(1.2);
+}
+
+/* Container de Conteúdo B */
+.capsula-b-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 4rem auto 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.texto-container-b {
+    flex: 1.55;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    height: 400px;
+    position: relative;
+    z-index: 2;
+}
+
+.texto-container-b h3 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+}
+
+.texto-container-b p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.video-container-b {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #ff4d4d;
+    border-radius: 10px;
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 110px;
+}
+
+.video-container-b iframe {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* CARROSSEL PRINCIPAL B */
+.carrossel-projetos-b {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    max-width: 4000px;
+    height: 300px;
+    margin: 1rem auto;
+    border-radius: 0px;
+}
+
+.carrossel-trilha-b {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.carrossel-item-b {
+    min-width: 500px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    object-position: 10% 18%;
+}
+
+.carrossel-botao-b {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    z-index: 10;
+    border-radius: 5px;
+}
+
+.carrossel-botao-b.prev {
+    left: 10px;
+}
+
+.carrossel-botao-b.next {
+    right: 10px;
+}
+
+.youtube-video-b {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.youtube-video-b iframe {
+    width: 100%;
+    max-width: 650px;
+    border-radius: 8px;
+}
+
+/* MEDIA QUERIES B */
+@media (max-width: 900px) {
+    .projetos-conteudo-b {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    .texto-container-b {
+        width: 90%;
+        height: auto;
+    }
+
+    .video-container-b {
+        width: 90%;
+        margin-top: 2rem;
+        margin-bottom: 0;
+    }
+}

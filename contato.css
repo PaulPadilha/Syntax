@@ -1,0 +1,37 @@
+/* ========================================================================= */
+/* contato.css - ESTILOS ESPECÍFICOS DA SEÇÃO DE CONTATO                      */
+/* ========================================================================= */
+
+.contato-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 8rem auto;
+}
+
+.form-input,
+.form-textarea {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-button {
+    background: #ccc;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.form-button:hover {
+    background: #aaa;
+}
+
+.whatsapp-link {
+    text-align: center;
+    margin-top: 1.5rem;
+}

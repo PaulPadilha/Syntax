@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&display=swap');
+
+/* RESET */
+html, body {
+    /* Garante que não haja margens/espaçamentos invisíveis */
+    margin: 0;
+    padding: 0;
+    /* Garante que ocupem 100% da largura do navegador */
+    width: 100%;
+    /* Esta linha é crucial para evitar barras horizontais em excesso: */
+    overflow-x: hidden;
+}
+
+body {
+    /* Mantém seus estilos existentes */
+    font-family: Arial, sans-serif;
+    background-image: url("Fotos/PLanoFundoCreme.jpg");
+    /* ... outros estilos ... */
+
+    /* COMPENSAÇÃO: Adiciona espaço no topo para que o conteúdo não fique atrás do header fixo */
+    padding-top: 60px; /* **Ajuste este valor (ex: 70px) se o seu header for mais alto** */
+
+    animation: slide 800s linear infinite;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* HEADER */
+.header {
+    background: rgba(15, 23, 42, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem;
+
+    /* ESSENCIAL: Fixa o elemento na viewport */
+    position: fixed;
+
+    top: 0;
+
+    /* Garante que ele ocupe toda a largura */
+    width: 100%;
+
+    /* Garante que o header fique acima de todo o conteúdo */
+    z-index: 1000;
+    border-top: 2px solid #999;
+
+    /* Remove a margem horizontal do padding para evitar barra de rolagem extra */
+    box-sizing: border-box;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: transparent; /* Torna o texto transparente para o gradiente aparecer */
+    -webkit-background-clip: text; /* Mágica para o gradiente aparecer dentro do texto */
+    background-clip: text;
+    background-image: linear-gradient(90deg, #000000 0%, #bbbbbb 20%, #000000 40%, #bbbbbb 60%, #000000 80%, #bbbbbb 100%);
+    background-size: 200% auto; /* Cria um gradiente maior que o texto para poder movimentar */
+    animation: flutuar 10s ease-in-out infinite, shimmer 200s linear infinite; /* Adiciona a animação shimmer */
+}
+
+@keyframes shimmer {
+    to {
+        background-position: -200% center; /* Move a posição do fundo para a esquerda */
+    }
+}
+
+@keyframes flutuar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px); /* Movimento de 5px para cima */
+    }
+}
+
+.nav-link {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    color: #555;
+}
+
+/* SEÇÕES (ESTILOS PADRÃO DE TÍTULO/TEXTO) */
+.section-title {
+    font-size: 3rem;
+    color: #000000;
+    margin: 3rem auto 3rem;
+    border-bottom: 2px solid #ccc;
+    display: block;
+    width: fit-content;
+    font-family: 'DM Serif Display', ;
+    font-style: italic;
+    text-align: center;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ANIMAÇÕES DE ENTRADA E FUNDO */
+.animate-slideInLeft {
+    animation: slideInLeft 2s ease-out forwards;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 3.2s ease-out forwards 0.0s;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -2000px 0;
+    }
+}
+
+/* FOOTER */
+.footer {
+    background: #ccc;
+    text-align: center;
+    padding: 1rem;
+
+    /* 1. MOVE PARA BAIXO */
+    margin-top: 5rem;
+    clear: both;
+    display: block;
+
+    /* 2. OCUPA A LARGURA TOTAL */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.footer-text {
+    color: #fff;
+}
