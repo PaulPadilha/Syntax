@@ -3,7 +3,7 @@
 /* HERO */
 @font-face {
     font-family: 'MinhaFonte';
-    src: url('../fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
+    src: url('fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
@@ -22,7 +22,7 @@
 .hero-subtitle {
     font-size: 1.8rem;
     color: #727272;
-    font-family: 'MinhaFonte';
+    font-family: 'MinhaFonte', serif;
 }
 
 /* SOBRE */
@@ -35,7 +35,7 @@
     border-radius: 8px;
 }
 
-@midia (min-width: 360px) and (max-width: 480px)
+@media (min-width: 360px) and (max-width: 480px)
 and (min-height: 780px) and (max-height: 1040px) {
     .sobre-card {
         height: 100px;
@@ -60,15 +60,15 @@ h2 {
 .comics-section {
     padding: 4rem 1rem;
     background-color: #f0f0f0;
-    border-top: 0px solid #000;
-    border-bottom: 0px solid #000;
+    border-top: 0 solid #000;
+    border-bottom: 0 solid #000;
 }
 
 .comic-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
-    gap: 0px;
+    gap: 0;
     max-width: 1920px;
     height: 650px;
     margin: 2rem auto;
@@ -88,7 +88,7 @@ h2 {
 
 
 .comic-panel {
-    padding: ;
+
     overflow: hidden;
     position: relative;
     cursor: pointer;

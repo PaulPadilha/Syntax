@@ -5,7 +5,7 @@
 /* NOVIDADES (ESTILOS GENÉRICOS) */
 @font-face {
     font-family: 'MinhaFonte';
-    src: url('../fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
+    src: url('fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
