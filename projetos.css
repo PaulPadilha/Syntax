@@ -5,13 +5,13 @@
 /* NOVIDADES (ESTILOS GENÉRICOS) */
 @font-face {
     font-family: 'MinhaFonte';
-    src: url('fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
+    src: url("fontes/LeJourSerifPersonalUseOnly.otf") format('opentype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'MinhaFontesec';
-    src: url('fontes/FiftiesMovies.ttf') format('opentype');
+    src: url("fontes/FiftiesMovies.ttf") format('opentype');
     font-weight: normal;
     font-style: normal;
 }
