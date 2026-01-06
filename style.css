@@ -16,7 +16,7 @@ html, body {
 
 body {
     font-family: Arial, sans-serif;
-    background-image: url("Fotos/PLanoFundoCreme.jpg");
+    background-image: url("fotos/PLanoFundoCreme.jpg");
     padding-top: 60px;
     animation: slide 800s linear infinite;
 }
