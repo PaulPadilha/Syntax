@@ -11,7 +11,7 @@
 }
 @font-face {
     font-family: 'MinhaFontesec';
-    src: url('../fontes/FiftiesMovies.ttf') format('opentype');
+    src: url('fontes/FiftiesMovies.ttf') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
