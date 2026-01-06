@@ -35,10 +35,9 @@
     border-radius: 8px;
 }
 
-@media (min-width: 360px) and (max-width: 480px)
-and (min-height: 780px) and (max-height: 1040px) {
+@media (max-width: 798px) {
     .sobre-card {
-        height: 100px;
+        height: auto;
     }
 }
 .section-title {
