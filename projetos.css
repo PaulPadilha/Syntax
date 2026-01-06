@@ -3,6 +3,18 @@
 /* ========================================================================= */
 
 /* NOVIDADES (ESTILOS GENÉRICOS) */
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../Fontes/LeJourSerifPersonalUseOnly.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MinhaFontesec';
+    src: url('../Fontes/FiftiesMovies.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
 .projetos {
     padding: 2rem 0;
     position: relative;
@@ -41,8 +53,8 @@
 .titulo-a {
     text-align: center;
     font-size: 3rem;
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
+    font-family: 'MinhaFonte', serif;
+    font-style: ;
     color: #aaaaaa;
 }
 
@@ -191,7 +203,7 @@
 .texto-container h3 {
     font-size: 1.8rem;
     margin-top: 0;
-    font-family: 'DM Serif Display', serif;
+    font-family: 'MinhaFonte', serif;
     font-style: italic;
 }
 
@@ -216,6 +228,40 @@
     height: 100%;
     display: flex;
 }
+@media (max-width: 480px) {
+
+    .capsula-a-conteudo {
+        flex-direction: column;   /* empilha */
+        align-items: stretch;     /* ocupa largura total */
+        gap: 1.5rem;
+        margin: 2rem 1rem;
+    }
+
+    .texto-container {
+        order: 1;
+    }
+    .video-container {
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        max-height: 220px;
+        margin: 0 auto;
+        height: auto;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+        border-radius: inherit;
+    }
+}
 
 /* CARROSSEL PRINCIPAL A */
 .carrossel-projetos {
@@ -224,6 +270,7 @@
     justify-content: space-between;
     position: relative;
     overflow: hidden;
+    width: 100%;
     max-width: 4000px;
     height: 300px;
     margin: 1rem auto;
@@ -236,14 +283,18 @@
     align-items: center;
     transition: transform 0.5s ease;
     height: 100%;
+    width: auto;
+    white-space: nowrap;
 }
 
 .carrossel-item {
     min-width: 500px;
+    width: 500px;
     height: 300px;
     object-fit: cover;
     display: block;
     object-position: 10% 18%;
+    flex-shrink: 0;
 }
 
 .carrossel-botao {
@@ -281,6 +332,9 @@
 
 /* MEDIA QUERIES A */
 @media (max-width: 900px) {
+    .cards-inclinados {
+        width: auto;
+    }
     .projetos-conteudo {
         flex-direction: column;
         align-items: center;
@@ -302,7 +356,7 @@
 
 /* BLOCO B (Cápsula 02) */
 .capsula-b {
-    background-image: url("Fotos/SaoPaulo1.jpg");
+    background-image: url("Fotos/Capsula02fundoborrado.jpg");
     background-size: 800px 800px;
     background-position: auto;
     background-repeat: no-repeat;
@@ -332,9 +386,9 @@
 .titulo-b {
     text-align: center;
     font-size: 3rem;
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    color: rgba(5, 6, 14, 0.75);
+    font-family: 'MinhaFontesec', serif;
+    font-style: ;
+    color: rgb(22, 22, 22);
 }
 
 /* CARDS INCLINADOS B */
@@ -347,6 +401,7 @@
     position: relative;
     border-radius: 15px;
     overflow: hidden;
+    display: none;
 }
 
 .card-inclinado-b {
@@ -363,6 +418,7 @@
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.8;
+    display: none;
 }
 
 .card-1b {
@@ -466,6 +522,7 @@
     margin: 4rem auto 2rem;
     position: relative;
     overflow: hidden;
+    display: none;
 }
 
 .texto-container-b {
@@ -515,6 +572,7 @@
     justify-content: space-between;
     position: relative;
     overflow: hidden;
+    width: 100%;
     max-width: 4000px;
     height: 300px;
     margin: 1rem auto;
@@ -527,14 +585,19 @@
     align-items: center;
     transition: transform 0.5s ease;
     height: 100%;
+    width: auto;
+    white-space: nowrap;
+    display: none;
 }
 
 .carrossel-item-b {
     min-width: 500px;
+    width: 500px;
     height: 300px;
     object-fit: cover;
     display: block;
     object-position: 10% 18%;
+    flex-shrink: 0;
 }
 
 .carrossel-botao-b {
@@ -549,6 +612,7 @@
     font-size: 2rem;
     z-index: 10;
     border-radius: 5px;
+    display: none;
 }
 
 .carrossel-botao-b.prev {

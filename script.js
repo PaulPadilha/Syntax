@@ -3,36 +3,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('.hero-title');
     const heroSubtitle = document.querySelector('.hero-subtitle');
 
-    // 1. Lógica da Animação do Hero (Executa apenas em index.html)
+    // Animação do Hero (Executa apenas em index.html)
     function animateHeroSection() {
-        if (heroTitle && heroSubtitle) { // Verifica se os elementos existem
-            // Remove as classes de animação para resetar
+        if (heroTitle && heroSubtitle) {
             heroTitle.classList.remove('animate-slideInLeft');
             heroSubtitle.classList.remove('animate-slideInRight');
-
-            // Força o navegador a recalcular a renderização
             void heroTitle.offsetWidth;
             void heroSubtitle.offsetWidth;
-
-            // Adiciona as classes de animação novamente
             heroTitle.classList.add('animate-slideInLeft');
             heroSubtitle.classList.add('animate-slideInRight');
         }
     }
-    animateHeroSection(); // Inicializa a animação quando a página carrega
+    animateHeroSection();
 
 
-    // 2. Lógica do Carrossel A (.carrossel-projetos)
+    // ===============================================
+    // Lógica do Carrossel A (.carrossel-projetos)
+    // ===============================================
     const carrosselContainerA = document.querySelector('.carrossel-projetos');
 
-    if (carrosselContainerA) { // Executa apenas se o carrossel A existir na página
+    if (carrosselContainerA) {
         const carrosselTrilhaA = carrosselContainerA.querySelector('.carrossel-trilha');
         const botoesA = carrosselContainerA.querySelectorAll('.carrossel-botao');
         let itensA = Array.from(carrosselTrilhaA.children);
 
-        // Clona e anexa itens para efeito de loop infinito
-        const clonesIniciaisA = itensA.slice(0, 3).map(item => item.cloneNode(true));
-        const clonesFinaisA = itensA.slice(-3).map(item => item.cloneNode(true));
+        // A LARGURA FIXA (500px no CSS)
+        const ITEM_WIDTH = 500;
+
+        // Lógica de Clonagem
+        const clonesCount = 3; //
+        const clonesIniciaisA = itensA.slice(0, clonesCount).map(item => item.cloneNode(true));
+        const clonesFinaisA = itensA.slice(-clonesCount).map(item => item.cloneNode(true));
 
         clonesIniciaisA.forEach(clone => carrosselTrilhaA.appendChild(clone));
         clonesFinaisA.reverse().forEach(clone => carrosselTrilhaA.prepend(clone));
@@ -40,7 +41,23 @@ document.addEventListener('DOMContentLoaded', () => {
         itensA = Array.from(carrosselTrilhaA.children);
         let currentIndexA = clonesFinaisA.length;
 
-        carrosselTrilhaA.style.transform = `translateX(-${itensA[currentIndexA].offsetLeft}px)`;
+
+        // Função para posicionar o carrossel corretamente (forçando a leitura da largura)
+        function setInitialPositionA() {
+            carrosselTrilhaA.style.transition = 'none';
+            // Tentativa de ler a largura real, caso 500 não esteja correto, mas mantendo 500 como fallback
+            const realItemWidthA = itensA[currentIndexA].offsetWidth > 0 ? itensA[currentIndexA].offsetWidth : ITEM_WIDTH;
+
+            carrosselTrilhaA.style.transform = `translateX(-${currentIndexA * realItemWidthA}px)`;
+
+            // Reativa a transição
+            setTimeout(() => {
+                carrosselTrilhaA.style.transition = 'transform 0.5s ease';
+            }, 50);
+        }
+
+        setTimeout(setInitialPositionA, 100);
+
 
         botoesA.forEach(botao => {
             botao.addEventListener('click', () => {
@@ -50,35 +67,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     currentIndexA--;
                 }
-
-                carrosselTrilhaA.style.transform = `translateX(-${itensA[currentIndexA].offsetLeft}px)`;
+                carrosselTrilhaA.style.transform = `translateX(-${currentIndexA * ITEM_WIDTH}px)`;
             });
         });
 
         carrosselTrilhaA.addEventListener('transitionend', () => {
-            if (currentIndexA >= itensA.length - clonesIniciaisA.length) {
+            // Lógica de loop infinito
+            if (currentIndexA >= itensA.length - clonesCount) {
                 carrosselTrilhaA.style.transition = 'none';
-                currentIndexA = clonesIniciaisA.length;
-                carrosselTrilhaA.style.transform = `translateX(-${itensA[currentIndexA].offsetLeft}px)`;
-            } else if (currentIndexA < clonesFinaisA.length) {
+                currentIndexA = clonesCount;
+                carrosselTrilhaA.style.transform = `translateX(-${currentIndexA * ITEM_WIDTH}px)`;
+            } else if (currentIndexA < clonesCount) {
                 carrosselTrilhaA.style.transition = 'none';
-                currentIndexA = itensA.length - clonesFinaisA.length - 1;
-                carrosselTrilhaA.style.transform = `translateX(-${itensA[currentIndexA].offsetLeft}px)`;
+                currentIndexA = itensA.length - clonesCount - 1;
+                carrosselTrilhaA.style.transform = `translateX(-${currentIndexA * ITEM_WIDTH}px)`;
             }
         });
     }
 
+    // ===============================================
     // 3. Lógica do Carrossel B (.carrossel-projetos-b)
+    // ===============================================
     const carrosselContainerB = document.querySelector('.carrossel-projetos-b');
 
-    if (carrosselContainerB) { // Executa apenas se o carrossel B existir na página
+    if (carrosselContainerB) {
         const carrosselTrilhaB = carrosselContainerB.querySelector('.carrossel-trilha-b');
         const botoesB = carrosselContainerB.querySelectorAll('.carrossel-botao-b');
         let itensB = Array.from(carrosselTrilhaB.children);
 
-        // Clona e anexa itens para efeito de loop infinito
-        const clonesIniciaisB = itensB.slice(0, 3).map(item => item.cloneNode(true));
-        const clonesFinaisB = itensB.slice(-3).map(item => item.cloneNode(true));
+        // A LARGURA FIXA (500px no CSS)
+        const ITEM_WIDTH = 500;
+
+        // Lógica de Clonagem
+        const clonesCount = 3;
+        const clonesIniciaisB = itensB.slice(0, clonesCount).map(item => item.cloneNode(true));
+        const clonesFinaisB = itensB.slice(-clonesCount).map(item => item.cloneNode(true));
 
         clonesIniciaisB.forEach(clone => carrosselTrilhaB.appendChild(clone));
         clonesFinaisB.reverse().forEach(clone => carrosselTrilhaB.prepend(clone));
@@ -86,7 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
         itensB = Array.from(carrosselTrilhaB.children);
         let currentIndexB = clonesFinaisB.length;
 
-        carrosselTrilhaB.style.transform = `translateX(-${itensB[currentIndexB].offsetLeft}px)`;
+        // Função para posicionar o carrossel B corretamente
+        function setInitialPositionB() {
+            carrosselTrilhaB.style.transition = 'none';
+            // Tentativa de ler a largura real para o posicionamento inicial
+            const realItemWidthB = itensB[currentIndexB].offsetWidth > 0 ? itensB[currentIndexB].offsetWidth : ITEM_WIDTH;
+
+            carrosselTrilhaB.style.transform = `translateX(-${currentIndexB * realItemWidthB}px)`;
+
+            // Reativa a transição
+            setTimeout(() => {
+                carrosselTrilhaB.style.transition = 'transform 0.5s ease';
+            }, 50);
+        }
+
+        // CORREÇÃO CRÍTICA: Executa o posicionamento inicial com um pequeno atraso
+        setTimeout(setInitialPositionB, 100);
 
         botoesB.forEach(botao => {
             botao.addEventListener('click', () => {
@@ -96,20 +134,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     currentIndexB--;
                 }
-
-                carrosselTrilhaB.style.transform = `translateX(-${itensB[currentIndexB].offsetLeft}px)`;
+                // Movimento usa a largura fixa para consistência
+                carrosselTrilhaB.style.transform = `translateX(-${currentIndexB * ITEM_WIDTH}px)`;
             });
         });
 
         carrosselTrilhaB.addEventListener('transitionend', () => {
-            if (currentIndexB >= itensB.length - clonesIniciaisB.length) {
+            // Lógica de loop infinito
+            if (currentIndexB >= itensB.length - clonesCount) {
                 carrosselTrilhaB.style.transition = 'none';
-                currentIndexB = clonesIniciaisB.length;
-                carrosselTrilhaB.style.transform = `translateX(-${itensB[currentIndexB].offsetLeft}px)`;
-            } else if (currentIndexB < clonesFinaisB.length) {
+                currentIndexB = clonesCount;
+                carrosselTrilhaB.style.transform = `translateX(-${currentIndexB * ITEM_WIDTH}px)`;
+            } else if (currentIndexB < clonesCount) {
                 carrosselTrilhaB.style.transition = 'none';
-                currentIndexB = itensB.length - clonesFinaisB.length - 1;
-                carrosselTrilhaB.style.transform = `translateX(-${itensB[currentIndexB].offsetLeft}px)`;
+                currentIndexB = itensB.length - clonesCount - 1;
+                carrosselTrilhaB.style.transform = `translateX(-${currentIndexB * ITEM_WIDTH}px)`;
             }
         });
     }
+});

@@ -1,25 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital,wght@0,400;1,400&display=swap');
+@font-face {
+    font-family: 'MinhaFonte';
+    src: url('../fonts/MinhaFonte-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* RESET */
 html, body {
-    /* Garante que não haja margens/espaçamentos invisíveis */
     margin: 0;
     padding: 0;
-    /* Garante que ocupem 100% da largura do navegador */
     width: 100%;
-    /* Esta linha é crucial para evitar barras horizontais em excesso: */
     overflow-x: hidden;
 }
 
 body {
-    /* Mantém seus estilos existentes */
     font-family: Arial, sans-serif;
     background-image: url("Fotos/PLanoFundoCreme.jpg");
-    /* ... outros estilos ... */
-
-    /* COMPENSAÇÃO: Adiciona espaço no topo para que o conteúdo não fique atrás do header fixo */
-    padding-top: 60px; /* **Ajuste este valor (ex: 70px) se o seu header for mais alto** */
-
+    padding-top: 60px;
     animation: slide 800s linear infinite;
 }
 
@@ -34,22 +32,14 @@ html {
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 2rem;
-
-    /* ESSENCIAL: Fixa o elemento na viewport */
     position: fixed;
-
     top: 0;
-
-    /* Garante que ele ocupe toda a largura */
     width: 100%;
-
-    /* Garante que o header fique acima de todo o conteúdo */
     z-index: 1000;
     border-top: 2px solid #999;
-
-    /* Remove a margem horizontal do padding para evitar barra de rolagem extra */
     box-sizing: border-box;
 }
+
 
 .logo {
     font-size: 2.5rem;
@@ -63,7 +53,7 @@ html {
 
 @keyframes shimmer {
     to {
-        background-position: -200% center; /* Move a posição do fundo para a esquerda */
+        background-position: -200% center;
     }
 }
 
@@ -149,22 +139,38 @@ html {
     }
 }
 
+@media (min-width: 360px) and (max-width: 480px)
+and (min-height: 780px) and (max-height: 1040px) {
+
+    .header {
+        padding: 0.5rem 1rem;
+        height: 56px;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+
+    }
+
+    .nav {
+        gap: 0.75rem;
+        padding: 0
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+}
 /* FOOTER */
 .footer {
     background: #ccc;
     text-align: center;
     padding: 1rem;
-
-    /* 1. MOVE PARA BAIXO */
-    margin-top: 5rem;
-    clear: both;
-    display: block;
-
-    /* 2. OCUPA A LARGURA TOTAL */
-    width: 100vw;
+    width: 100%;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 0;
+    left: 0;
+    z-index: ;
 }
 
 .footer-text {
