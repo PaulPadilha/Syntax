@@ -117,7 +117,7 @@ h2 {
 .comic-panel.panel-2 .panel-img { object-position: center 51%; }
 .comic-panel.panel-3 .panel-img { object-position: 100% 21%; }
 .comic-panel.panel-4 .panel-img { object-position: center 50%; }
-.comic-panel.panel-5 .panel-img { object-position: center 75%; }
+.comic-panel.panel-5 .panel-img { object-position: center 38%; }
 .comic-panel.panel-6 .panel-img { object-position: 100% 80%; }
 
 /* Responsividade de Comics */
@@ -141,6 +141,7 @@ h2 {
         height: 200px;
     }
 }
+
 
 /* --- Estilização da Seção da Playlist do SoundCloud (INDEX) --- */
 
