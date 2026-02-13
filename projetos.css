@@ -545,7 +545,7 @@
 }
 
 .texto-container-b h3 {
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-top: 0;
     font-family: 'MinhaFontesec', serif;
     font-style: italic;
@@ -553,7 +553,7 @@
 
 .texto-container-b p {
     font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.2;
     font-family: 'Consolas', Serif;
 }
 
