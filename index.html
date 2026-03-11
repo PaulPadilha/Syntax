@@ -6,6 +6,80 @@
     <title>Syntax Produtora - Início</title>
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="index.css">
+    <style>
+        /* Estilos do Pop-up de Lançamento Cápsulas */
+        .capsula-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("fotos/CAPSULA-002.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: darken;
+            background-color: rgba(0, 0, 0, 0.9); /* Fundo bem escuro */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000; /* Garante que fique acima de tudo */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(5px); /* Efeito moderno de desfoque */
+        }
+
+        .capsula-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .capsula-content {
+            background: #121212;
+            border: 1px solid #333;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            color: #fff;
+            font-family: 'Interstate', sans-serif; /* Mantendo a identidade */
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 28px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close-popup:hover { color: #fff; }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 25px 0;
+            font-family: monospace; /* Fonte técnica para os números */
+        }
+
+        .timer-box {
+            background: #1a1a1a;
+            padding: 10px;
+            min-width: 70px;
+            border: 1px solid #333;
+            border-radius: 4px;
+        }
+
+        .timer-val { font-size: 1.8rem; font-weight: bold; display: block; color: #fff; }
+        .timer-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -156,6 +230,61 @@
 <footer class="footer">
     <p class="footer-text">&copy; 2025 Syntax - Batidas com identidade</p>
 </footer>
+
+<!-- Pop-up Overlay Lançamento -->
+<div id="capsula-popup" class="capsula-overlay">
+    <div class="capsula-content">
+        <button id="close-capsula" class="close-popup">&times;</button>
+        <h3 style="text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; color: #ccc; margin-bottom: 5px;">Próximo Lançamento</h3>
+        <h2 style="font-size: 2.5rem; margin: 0 0 10px 0; text-transform: uppercase;">EP-003</h2>
+        
+        <div class="countdown-timer">
+            <div class="timer-box"><span id="c-days" class="timer-val">00</span><span class="timer-label">Dias</span></div>
+            <div class="timer-box"><span id="c-hours" class="timer-val">00</span><span class="timer-label">Horas</span></div>
+            <div class="timer-box"><span id="c-min" class="timer-val">00</span><span class="timer-label">Min</span></div>
+            <div class="timer-box"><span id="c-sec" class="timer-val">00</span><span class="timer-label">Seg</span></div>
+        </div>
+
+        <p style="color: #999; margin-bottom: 25px; font-size: 0.9rem;">6usta     -    Rhenan Duarte   -   Npe.</p>
+        <a href="https://sndo.ffm.to/vbzo3xd" style="display: inline-block; background: #fff; color: #000; padding: 12px 30px; text-decoration: none; text-transform: uppercase; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s;">Pré-Save</a>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // --- CONFIGURAÇÃO DA DATA ---
+        // Defina aqui a data do lançamento. Exemplo: 7 dias a partir de agora.
+        const launchDate = new Date("2026-03-13T20:00:00");
+        launchDate.setDate(launchDate.getDate() + 0);
+        // Para uma data fixa use: const launchDate = new Date("2026-04-10T20:00:00");
+
+        const popup = document.getElementById('capsula-popup');
+        const closeBtn = document.getElementById('close-capsula');
+
+        // Mostrar popup automaticamente após 1.5 segundos
+        setTimeout(() => popup.classList.add('active'), 1500);
+
+        // Fechar popup ao clicar no X
+        closeBtn.addEventListener('click', () => popup.classList.remove('active'));
+
+        // Lógica do contador
+        const timerInterval = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            if (distance < 0) {
+                clearInterval(timerInterval);
+                document.querySelector('.countdown-timer').innerHTML = "<p style='color:#fff'>LANÇADO</p>";
+                return;
+            }
+
+            document.getElementById("c-days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+            document.getElementById("c-hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+            document.getElementById("c-min").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+            document.getElementById("c-sec").innerText = Math.floor((distance % (1000 * 60)) / 1000).toString().padStart(2, '0');
+        }, 1000);
+    });
+</script>
 
 <script src="script.js"></script>
 </body>

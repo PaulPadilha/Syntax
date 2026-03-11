@@ -152,4 +152,70 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // 3. Lógica do Carrossel c (.carrossel-projetos-c)
+    const carrosselContainerC = document.querySelector('.carrossel-projetos-c');
+
+    if (carrosselContainerC) {
+        const carrosselTrilhaC = carrosselContainerC.querySelector('.carrossel-trilha-c');
+        const botoesC = carrosselContainerC.querySelectorAll('.carrossel-botao-c');
+        let itensC = Array.from(carrosselTrilhaC.children);
+
+        const ITEM_WIDTH = 500; // A largura fixa do seu CSS
+
+        // Lógica de Clonagem correta (usando itensC)
+        const clonesCount = 3;
+        const clonesIniciaisC = itensC.slice(0, clonesCount).map(item => item.cloneNode(true));
+        const clonesFinaisC = itensC.slice(-clonesCount).map(item => item.cloneNode(true));
+
+        // Adiciona os clones
+        clonesIniciaisC.forEach(clone => carrosselTrilhaC.appendChild(clone));
+        clonesFinaisC.reverse().forEach(clone => carrosselTrilhaC.prepend(clone));
+
+        // Atualiza a lista de itens após a clonagem
+        itensC = Array.from(carrosselTrilhaC.children);
+        let currentIndexC = clonesCount; // Começa após os clones do início
+
+        function updateTransformC() {
+            carrosselTrilhaC.style.transform = `translateX(-${currentIndexC * ITEM_WIDTH}px)`;
+        }
+
+        function setInitialPositionC() {
+            carrosselTrilhaC.style.transition = 'none';
+            updateTransformC();
+
+            setTimeout(() => {
+                carrosselTrilhaC.style.transition = 'transform 0.5s ease';
+            }, 50);
+        }
+
+        // Posicionamento inicial
+        setTimeout(setInitialPositionC, 100);
+
+        // Evento de clique nos botões (corrigido de botoesB para botoesC)
+        botoesC.forEach(botao => {
+            botao.addEventListener('click', () => {
+                carrosselTrilhaC.style.transition = 'transform 0.5s ease';
+                if (botao.classList.contains('next')) {
+                    currentIndexC++;
+                } else {
+                    currentIndexC--;
+                }
+                updateTransformC();
+            });
+        });
+
+        // Lógica de loop infinito (corrigido referências B para C)
+        carrosselTrilhaC.addEventListener('transitionend', () => {
+            if (currentIndexC >= itensC.length - clonesCount) {
+                carrosselTrilhaC.style.transition = 'none';
+                currentIndexC = clonesCount;
+                updateTransformC();
+            } else if (currentIndexC < clonesCount) {
+                carrosselTrilhaC.style.transition = 'none';
+                currentIndexC = itensC.length - (clonesCount * 2);
+                // A lógica acima ajusta para o final real antes dos clones
+                updateTransformC();
+            }
+        });
+    }
 });
