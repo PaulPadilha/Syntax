@@ -713,7 +713,7 @@
     z-index: 1;
     margin-top: 4rem;
     min-height: 800px;
-    display: none;
+    display: ;
 }
 
 .capsula-c::before {
